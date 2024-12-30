@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import SeatMap from "../../components/SeatMap";
 import { Box, Button, Typography, TextField } from "@mui/material";
 import axios from "axios";
-import { useParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 let apiUrl = process.env.BASE_API_URL;
 
 const TrainSeats = () => {
   const [bookedSeats, setBookedSeats] = useState<number[]>([]);
-  const { trainId } = useParams(); 
+  const router = useRouter(); 
   const [numberOfSeats, setNumberOfSeats] = useState<number>(1);
+  const trainId = router.query.trainId;
 
   useEffect(() => {
     const fetchBookedSeats = async () => {
