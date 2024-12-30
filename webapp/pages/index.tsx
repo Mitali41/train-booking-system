@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 
-let apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
+let apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL || "https://train-booking-system-s4hc.onrender.com";
 
 export default function Home() {
   const [isSignup, setIsSignup] = useState(false);

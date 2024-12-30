@@ -10,7 +10,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 
-let apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
+let apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL || "https://train-booking-system-s4hc.onrender.com";
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState<any[]>([]);

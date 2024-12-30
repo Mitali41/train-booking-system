@@ -4,7 +4,7 @@ import { Box, Button, Typography, TextField } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-let apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
+let apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL || "https://train-booking-system-s4hc.onrender.com";
 
 const TrainSeats = () => {
   const [bookedSeats, setBookedSeats] = useState<number[]>([]);
