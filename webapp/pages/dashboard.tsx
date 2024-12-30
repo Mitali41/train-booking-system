@@ -20,7 +20,7 @@ interface Train {
   departureTime: string;
 }
 
-let apiUrl = process.env.BASE_API_URL;
+let apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 export default function Dashboard() {
   const [trains, setTrains] = useState<Train[]>([]);
