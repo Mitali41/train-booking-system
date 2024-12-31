@@ -8,6 +8,7 @@ import {
   TextField,
   Button,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import axios from "axios";
 
@@ -17,6 +18,7 @@ export default function Home() {
   const [isSignup, setIsSignup] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const isMobile = useMediaQuery('(max-width:600px)');
 
   const router = useRouter();
 
@@ -43,20 +45,39 @@ export default function Home() {
 
   return (
     <Grid container style={{ height: "100vh" }}>
+      {!isMobile && (
+        <Grid
+          item
+          xs={6}
+          style={{
+            background: "url('/train.jpg') no-repeat center center",
+            backgroundSize: "cover",
+          }}
+        />
+      )}
       <Grid
         item
-        xs={6}
+        xs={isMobile ? 12 : 6}
         style={{
-          background: "url('/train.jpg') no-repeat center center",
-          backgroundSize: "cover",
+          background: isMobile ? "url('/train.jpg') no-repeat center center" : "none",
+          backgroundSize: "100% 100%",
         }}
-      />
-      <Grid item xs={6}>
-        <Box display="flex" flexDirection="column" gap={8} alignItems="center" justifyContent="center" height="100%">
-          <Typography variant="h4">
+      >
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap={8}
+          alignItems="center"
+          justifyContent="center"
+          height="100%"
+          style={{
+            backgroundColor: isMobile ? "rgba(0, 0, 0, 0.5)" : "transparent",
+          }}
+        >
+          <Typography variant="h4" style={{ color: isMobile ? "#fff" : "inherit" }}>
             Train Booking System
           </Typography>
-          <Card style={{ width: "100%", maxWidth: 400 }}>
+          <Card style={{ width: "100%", maxWidth: 400, ...(isMobile ? { backgroundColor: "rgba(255, 255, 255, 0.9)" } : {}) }}>
             <CardContent>
               <Typography variant="h5" gutterBottom>
                 {isSignup ? "Sign Up" : "Login"}
